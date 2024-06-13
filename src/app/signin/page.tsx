@@ -1,7 +1,7 @@
 import type { BuiltInProviderType } from "next-auth/providers/index";
 import type { ClientSafeProvider, LiteralUnion } from "next-auth/react";
 import { getProviders } from "next-auth/react";
-import Image from "next/image";
+// import Image from "next/image";
 import SignInButton from "./SignInButton";
 
 type Providers = Record<
@@ -20,16 +20,18 @@ export async function fetchProviders(): Promise<Providers | []> {
 
 export default async function SignIn() {
   const providers = await fetchProviders();
+  console.log(providers);
+  
   return (
     <>
       <div className="bg-olive-one selection:bg-green-two min-h-screen p-0 md:px-8 md:py-24">
         <div className="flex flex-col items-center space-y-20 pt-40">
-          <Image
+          {/* <Image
             src="/images/github-icon.png"
             width={170}
             height={170}
             alt="github-icon"
-          />
+          /> */}
           <div className="text-center">
             <div className="mx-auto max-w-3xl">
               <div className="flexjustify-center"></div>
