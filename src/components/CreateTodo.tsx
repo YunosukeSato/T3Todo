@@ -1,6 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { createInput } from "~/server/types";
+import { type Todo, createInput } from "~/server/types";
 import { api } from "~/trpc/react";
 
 export function CreateTodo() {
@@ -8,6 +8,27 @@ export function CreateTodo() {
 
   const trpc = api.useUtils();
   const { mutate } = api.todo.create.useMutation({
+    onMutate: async (newTodo) => {
+      await trpc.todo.all.cancel();
+      const previousTodos = trpc.todo.all.getData();
+      trpc.todo.all.setData(undefined, (prev) => {
+        const optimisticTodo: Todo = {
+          id: "optimistic-todo-id",
+          text: newTodo,
+          isCompleted: false,
+        };
+        if (!prev) return [optimisticTodo];
+        return [optimisticTodo, ...prev];
+      });
+      setNewTodo("");
+      return { previousTodos };
+    },
+    onError: (err, newTodo, context) => {
+      toast.error("An error occurred when creating todo");
+      setNewTodo(newTodo);
+      if (!context) return;
+      trpc.todo.all.setData(undefined, () => context.previousTodos);
+    },
     onSettled: async () => {
       await trpc.todo.all.invalidate();
     },
