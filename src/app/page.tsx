@@ -1,16 +1,17 @@
-'use client';
+"use client";
 // import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { CreateTodo } from "~/components/CreateTodo";
+import { Todos } from "~/components/Todos";
 
 function Home() {
   const { data: sessionData, status } = useSession();
-  
+
   return (
     <>
-      <div className="bg-olive-one selection:bg-green-two min-h-screen p-0 md:px-8 md:py-24">
-        <main className="bg-cream-four md:outline-cream-four mx-auto min-h-screen max-w-none rounded-none px-5 pb-10 pt-24 outline-none md:max-w-[60rem] md:rounded-2xl md:px-8 md:outline md:outline-4 md:outline-offset-8">
-          <h1 className="text-gray-three mb-6 text-center text-4xl font-bold">
+      <div className="min-h-screen bg-olive-one p-0 selection:bg-green-two md:px-8 md:py-24">
+        <main className="mx-auto min-h-screen max-w-none rounded-none bg-cream-four px-5 pb-10 pt-24 outline-none md:max-w-[60rem] md:rounded-2xl md:px-8 md:outline md:outline-4 md:outline-offset-8 md:outline-cream-four">
+          <h1 className="mb-6 text-center text-4xl font-bold text-gray-three">
             ToDo List
           </h1>
           {status !== "loading" && sessionData && (
@@ -22,7 +23,7 @@ function Home() {
                   <span>Logged in as {sessionData.user?.email}</span>
                 </p>
                 <button
-                  className="outline-green-one hover:text-green-five mb-8 inline-flex cursor-pointer items-center justify-center rounded-md px-4 py-2 font-semibold outline outline-2 outline-offset-2"
+                  className="mb-8 inline-flex cursor-pointer items-center justify-center rounded-md px-4 py-2 font-semibold outline outline-2 outline-offset-2 outline-green-one hover:text-green-five"
                   onClick={() => void signOut()}
                 >
                   Sign out
@@ -30,6 +31,7 @@ function Home() {
               </div>
               <div>
                 <CreateTodo />
+                <Todos />
               </div>
             </>
           )}
@@ -38,16 +40,16 @@ function Home() {
             // かつ、認証されていない場合に、下記が表示されます
             <div className="flex flex-col items-center">
               <button
-                className="outline-green-one hover:text-green-five mb-5 inline-flex cursor-pointer items-center justify-center rounded-md px-4 py-2 font-semibold outline outline-2 outline-offset-2"
+                className="mb-5 inline-flex cursor-pointer items-center justify-center rounded-md px-4 py-2 font-semibold outline outline-2 outline-offset-2 outline-green-one hover:text-green-five"
                 onClick={() => void signIn()}
               >
                 Sign In
               </button>
               <div className="mb-5 text-xl">
-                <p className="text-gray-four text-center">
+                <p className="text-center text-gray-four">
                   Keep your life in order with todolist
                 </p>
-                <p className="text-gray-four text-center">
+                <p className="text-center text-gray-four">
                   - The ultimate productivity tool -
                 </p>
               </div>
