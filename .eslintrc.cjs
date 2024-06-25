@@ -13,36 +13,11 @@ const config = {
   rules: {
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
-    "@typescript-eslint/no-unsafe-argument": [
-      "error",
-      {
-        ignore: ["trpc"],
-      },
-    ],
-    "@typescript-eslint/no-unsafe-call": [
-      "error",
-      {
-        ignore: ["trpc"],
-      },
-    ],
-    "@typescript-eslint/no-unsafe-return": [
-      "error",
-      {
-        ignore: ["trpc"],
-      },
-    ],
-    "@typescript-eslint/no-unsafe-member-access": [
-      "error",
-      {
-        ignore: ["trpc"],
-      },
-    ],
-    "@typescript-eslint/no-redundant-type-constituents": [
-      "error",
-      {
-        ignore: ["trpc"],
-      },
-    ],
+    "@typescript-eslint/no-unsafe-argument": "error",
+    "@typescript-eslint/no-unsafe-call": "error",
+    "@typescript-eslint/no-unsafe-return": "error",
+    "@typescript-eslint/no-unsafe-member-access": "error",
+    "@typescript-eslint/no-redundant-type-constituents": "error",
     "@typescript-eslint/consistent-type-imports": [
       "warn",
       {
