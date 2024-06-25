@@ -1,5 +1,5 @@
 import { api } from "~/trpc/react";
-import { Todo } from "~/components/Todo";
+import { Todo } from "~/_components/Todo";
 import { ProgressBar } from "./ProgressBar";
 
 export function Todos() {
@@ -31,7 +31,7 @@ export function Todos() {
           </section>
         );
       })}
-      <ProgressBar todos={todos} /> 
+      <ProgressBar todos={todos} />
     </>
   );
 }

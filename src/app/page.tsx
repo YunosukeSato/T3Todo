@@ -1,8 +1,8 @@
 "use client";
 // import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { CreateTodo } from "~/components/CreateTodo";
-import { Todos } from "~/components/Todos";
+import { CreateTodo } from "~/_components/CreateTodo";
+import { Todos } from "~/_components/Todos";
 
 function Home() {
   const { data: sessionData, status } = useSession();
