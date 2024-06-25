@@ -9,7 +9,7 @@ type Providers = Record<
   ClientSafeProvider
 >;
 
-export async function fetchProviders(): Promise<Providers | []> {
+async function fetchProviders(): Promise<Providers | []> {
   // ここで、認証の方法（providers）を取得しています
   // 今回は、GitHub による認証だけですが、複数の認証方法（Google・Twitterなど）を取得することが出来ます
   // 一つも認証方法が取得できなかった場合は、providers に空の配列をセットしています
@@ -20,7 +20,6 @@ export async function fetchProviders(): Promise<Providers | []> {
 
 export default async function SignIn() {
   const providers = await fetchProviders();
-  console.log(providers);
   
   return (
     <>
