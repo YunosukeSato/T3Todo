@@ -1,5 +1,4 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { createSecretKey } from "crypto";
 import {
   getServerSession,
   type DefaultSession,
